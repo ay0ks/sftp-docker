@@ -6,7 +6,6 @@ services:
     ports:
       - 2222:22
     volumes:
-      - ./secret/id_ed25519:/etc/ssh/id_ed25519
-      - ./secret/id_rsa:/etc/ssh/id_rsa
+      - ./secret/id_ed25519:/etc/ssh/id_ed25519:Z
+      - ./secret/id_rsa:/etc/ssh/id_rsa:Z
       - ./config/users.conf:/etc/sftp/users.conf:ro
-      - ./share:/home
