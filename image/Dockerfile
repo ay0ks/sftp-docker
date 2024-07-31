@@ -10,6 +10,7 @@ COPY files/entry.sh /root/entry.sh
 COPY files/sshd.conf /etc/ssh/sshd_config
 COPY files/sftpctl /root/sftpctl
 
+RUN chmod +x /root/entry.sh
 RUN . /root/.cargo/env && cargo install --path /root/sftpctl --root /
 RUN cp /bin/sftpctl /sbin/
 
