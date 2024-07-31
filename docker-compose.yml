@@ -3,7 +3,8 @@ services:
     build:
       context: ./image
       network: host
-    network_mode: host
+    ports:
+      - 2222:22
     volumes:
       - ./secret/id_ed25519:/etc/ssh/id_ed25519
       - ./secret/id_rsa:/etc/ssh/id_rsa
