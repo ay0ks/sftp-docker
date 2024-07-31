@@ -7,7 +7,7 @@ RUN rm -rf /var/lib/apt/lists/* && rm -f /etc/ssh/id_*
 RUN mkdir -p /var/run/sshd
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
-copy files/sshd.conf /etc/ssh/sshd_config
+COPY files/sshd.conf /etc/ssh/sshd_config
 COPY files/sftpctl /root/
 RUN cd /root/sftpctl && cargo install --path .
 
