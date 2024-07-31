@@ -1,5 +1,5 @@
 services:
-  disorder_sftp:
+  sftp:
     build:
       context: ./image
     ports:
