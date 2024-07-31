@@ -2,8 +2,8 @@ services:
   sftp:
     build:
       context: ./image
-    ports:
-      - 2222:22
+      network: host
+    network_mode: host
     volumes:
       - ./secret/id_ed25519:/etc/ssh/id_ed25519
       - ./secret/id_rsa:/etc/ssh/id_rsa
