@@ -9,3 +9,20 @@ services:
       - ./secret/id_ed25519:/etc/ssh/id_ed25519:Z
       - ./secret/id_rsa:/etc/ssh/id_rsa:Z
       - ./config/users.conf:/etc/sftp/users.conf:ro
+      - sftp_volume:/home
+
+  sftp_client:
+    image: jlesage/filezilla
+    restart: always
+    network_mode: host
+    volumes:
+      - ./config-client:/config:rw
+      - ./share:/storage:rw
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+      - 8.8.4.4
+      - 1.0.0.1
+
+volumes:
+  sftp_volume:
