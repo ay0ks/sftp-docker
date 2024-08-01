@@ -8,12 +8,11 @@ RUN mkdir -p /var/run/sshd
 COPY files/sshd.conf /etc/ssh/sshd_config
 COPY files/sftpctl /root/sftpctl
 COPY files/entry.sh /entry.sh
-
 RUN chmod +x /entry.sh
+
 RUN . /root/.cargo/env && cargo install --path /root/sftpctl --root /
 RUN cp /bin/sftpctl /sbin/
 
-RUN rm -f /etc/ssh/id_*
 RUN rm -rf /var/lib/apt/lists/*
 
 ENV NOTVISIBLE="in users profile"
